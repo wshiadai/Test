@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATTIOT.Model", "ATTIOT.Model\ATTIOT.Model.csproj", "{41622E12-1160-4093-82C7-DCD4830D2B41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATTIOT.Common", "ATTIOT.Common\ATTIOT.Common.csproj", "{5DF358C2-1AD2-4D6E-88F8-52DB83C04009}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ATTIOT.Portal", "ATTIOT.Portal\ATTIOT.Portal.csproj", "{8EE3C2AF-E647-423E-BA66-C45577C3E08A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41622E12-1160-4093-82C7-DCD4830D2B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41622E12-1160-4093-82C7-DCD4830D2B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41622E12-1160-4093-82C7-DCD4830D2B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41622E12-1160-4093-82C7-DCD4830D2B41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DF358C2-1AD2-4D6E-88F8-52DB83C04009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DF358C2-1AD2-4D6E-88F8-52DB83C04009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DF358C2-1AD2-4D6E-88F8-52DB83C04009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DF358C2-1AD2-4D6E-88F8-52DB83C04009}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EE3C2AF-E647-423E-BA66-C45577C3E08A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EE3C2AF-E647-423E-BA66-C45577C3E08A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EE3C2AF-E647-423E-BA66-C45577C3E08A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EE3C2AF-E647-423E-BA66-C45577C3E08A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

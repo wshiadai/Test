@@ -1,0 +1,213 @@
+﻿@using ATTIOT.Model;
+<!DOCTYPE html>
+<html>
+<head>
+    <title>118服务器主页</title>
+    <link type="text/css" rel="stylesheet" href="/content/bootstrap-3.4.1-dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="/content/bootstrap-3.4.1-dist/plus/bootstrap-switch.css" />
+    <link type="text/css" rel="stylesheet" href="/content/css/jquery-ui.css" />
+    <link type="text/css" rel="stylesheet" href="/content/css/site.css?v=@ViewBag.version" />
+</head>
+<body>
+    <div class="nav">
+        <ul class="container">
+            <li class="logo"><img src="/content/images/logo.png" alt="物之联" /></li>
+            <li><a href="javascript:void(0)" anchor="server">关于服务器</a></li>
+            <li><a href="javascript:void(0)" anchor="dot_net">.NET项目</a></li>
+            <li><a href="javascript:void(0)" anchor="java">Java项目</a></li>
+            <li class="search">
+                <input type="text" class="s_box" name="s_box" placeholder="搜索项目" /><input type="button" class="s_btn" name="s_btn" />
+                <input type="hidden" id="pro_id" name="pro_id" />
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="banner">
+        <div id="img-fade">
+            <ul class="image">
+                <li style="background-image: url(/content/images/banner.jpg);"></li>
+                <li style="background-image: url(/content/images/banner_2.jpg);"></li>
+                <li style="background-image: url(/content/images/banner_3.jpg);"></li>
+            </ul>
+            <ul class="sign">
+                <li class="on"></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="container data">
+        <div class="welcome">
+            <h2><span class="glyphicon glyphicon-home home_icon"></span>欢迎访问118服务器 :)</h2>
+            <p>这里可以查看192.168.1.118服务器的基本信息，浏览服务器上运行的.NET项目和Java项目</p>         
+        </div>
+        <div class="server">
+            <div class="title">
+                <span class="glyphicon glyphicon-stats ico"></span>关于服务器
+            </div>
+            <div class="info">
+                @if (ViewBag.server != null)
+                {
+                <div>
+                    <span class="name">服务器名称：</span><span class="value">@ViewBag.server.Name</span>
+                    <span class="name">IP：</span><span class="vr">@ViewBag.server.IP</span>
+                </div>
+                <div>
+                    <span class="name">型号：</span><span class="value">@ViewBag.server.Model</span>
+                    <span class="name">初始安装时间：</span><span class="vr">@ViewBag.server.InstallDate.ToString("yyyy年MM月dd日 HH:mm")</span>
+                </div>
+                <div>
+                    <span class="name">系统启动时间：</span><span class="value">@ViewBag.server.StartDate.ToString("yyyy年MM月dd日 HH:mm")</span>
+                    <span class="name">运行时长：</span><span class="vr">约 @ViewBag.server.RunSpan</span>
+                </div>
+                <div>
+                    <span class="name">操作系统：</span><span class="value">@ViewBag.server.OS</span>
+                    <span class="name">系统位数：</span><span class="vr">@ViewBag.server.Bit</span>
+                </div>
+                <div>
+                    <span class="name">CPU：</span><span class="value">@ViewBag.server.CPU_Name</span>
+                    <span class="name">物理内存：</span><span class="vr">@ViewBag.server.TotalMemory.ToString("0.0") G</span>
+                </div>
+                <div>
+                    <span class="name">硬盘总容量：</span><span class="value">@ViewBag.server.TotalDisk.ToString("0.0") G</span>
+                    <span class="name">可用容量：</span><span class="vr">@ViewBag.server.FreeDisk.ToString("0.0") G</span>
+                </div>
+                if (ViewBag.user != null) { 
+                <div>
+                    <span class="name">登录帐号：</span><span class="value">@ViewBag.user.User</span>
+                    <span class="name">密码：</span><span class="vr" >@ViewBag.user.Password &nbsp;&nbsp;<a href="javascript:void(0)" id="more_account">更多</a></span>
+                </div>
+                }
+                <div>
+                    <span class="name">.NET项目数量：</span><span class="value" id="dotnet_total"></span>
+                    <span class="name">Java项目数量：</span><span class="vr" id="java_total"></span>
+                </div>
+                <div class="pull-right update">数据更新时间：@DateTime.Now.ToString("yyyy-MM-dd HH:mm")</div>
+                }
+                else
+                {
+                    <p class="empty">暂无服务器数据……</p>
+                }
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="list dot_net">
+            <div class="title">
+                <span class="glyphicon glyphicon-list-alt ico"></span>.NET项目
+            </div>
+            <ul>
+                @if (ViewBag.netList != null && ViewBag.netList.Count > 0)
+                {
+                foreach (var item in (List<DotNet>)ViewBag.netList)
+                {
+                    <li no="dotnet_@item.No">
+                        <h3 class="pro_name"><a href="@item.URL" target="_blank">@item.Name</a></h3>
+                        <div class="p_row">
+                            <span class="key"><span class="glyphicon glyphicon-link ico"></span>访问地址：</span><span class="value"><a href="@item.URL" target="_blank">@item.URL</a></span>
+                            <span class="key"><span class="glyphicon glyphicon-record ico"></span>端口：</span><span class="value">@item.Port</span>
+                        </div>
+                        <div class="p_row">
+                            <span class="key"><span class="glyphicon glyphicon-file ico"></span>项目路径：</span><span class="value">@item.Path</span>
+                            <span class="key"><span class="glyphicon glyphicon-hdd ico"></span>对应数据库：</span><span class="value">@item.DB</span>
+                        </div>
+                        <div class="p_row">
+                            <span class="key"><span class="glyphicon glyphicon-th-large ico"></span>备注：</span><span class="value">@item.Remark</span>
+                        </div>
+                    </li>
+                }
+                }
+            else
+                {
+                    <li class="empty">暂无数据……</li>
+                }
+            </ul>
+        </div>
+        <div class="list java">
+            <div class="title"><span class="glyphicon glyphicon-list-alt ico"></span>Java项目</div>
+            <ul>
+                @if (ViewBag.javaList != null && ViewBag.javaList.Count > 0)
+            {
+            foreach (var item in (List<Java>)ViewBag.javaList)
+            {
+                <li no="java_@item.No">
+                    <h3 class="pro_name"><a href="@item.URL" target="_blank">@item.Name</a></h3>
+                    <div class="p_row">
+                        <span class="key"><span class="glyphicon glyphicon-link ico"></span>访问地址：</span><span class="value"><a href="@item.URL" target="_blank">@item.URL</a></span>
+                        <span class="key"><span class="glyphicon glyphicon-record ico"></span>Shutdown端口：</span><span class="value">@item.ShutdownPort</span>
+                    </div>
+                    <div class="p_row">
+                        <span class="key"><span class="glyphicon glyphicon-record ico"></span>HTTP访问端口：</span><span class="value">@item.HttpPort</span>
+                        <span class="key"><span class="glyphicon glyphicon-record ico"></span>AJP协议访问端口：</span><span class="value">@item.AJPPort</span>
+                    </div>
+                    <div class="p_row">
+                        <span class="key"><span class="glyphicon glyphicon-file ico"></span>项目路径：</span><span class="value">@item.Path</span>
+                        <span class="key"><span class="glyphicon glyphicon-hdd ico"></span>对应数据库：</span><span class="value">@item.DB</span>
+                    </div>
+                    <div class="p_row">
+                        <span class="key"><span class="glyphicon glyphicon-th-large ico"></span>备注：</span><span class="value">@item.Remark</span>
+                    </div>
+                </li>
+            }
+            }
+        else
+            {
+                    <li class="empty">暂无数据……</li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="help">
+        <div class="container">
+            <div class="qa">
+                <div class="title"><span class="glyphicon glyphicon-flag ico"></span>Q & A</div>
+                <ul>
+                    <li>
+                        <div>Q：这个主页是用来干吗的？</div>
+                        <div>A：这是118服务器的主页，方便相关人员快速访问对应的项目。</div>
+                    </li>
+                    <li>
+                        <div>Q：项目对应的数据库在什么服务器上？</div>
+                        <div>A：若无特别说明，项目对应的数据库都在192.168.1.222上。</div>
+                    </li>
+                    <li>
+                        <div>Q：新添加的项目，在这个主页上可以看到吗？</div>
+                        <div>A：主页数据来源为服务器D盘根目录下的文件<span class="marker"> 118服务器运行项目列表.xlsx </span>，只需要更新该清单文件，<br />即可看到新添加的项目信息。</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="download">
+                <a href="javascript:void(0)" id="down_btn"><span class="glyphicon glyphicon-download-alt ico"></span>下载项目清单</a>
+            </div>
+        </div>
+    </div>  
+    <div class="footer">
+        <div class="copyright">
+            &copy; 2013 - @DateTime.Now.ToString("yyyy")&nbsp;&nbsp;厦门物之联智能科技有限公司&nbsp;&nbsp;All Rights Reserved
+        </div>
+    </div>
+    <a href="javascript:void(0)" id="backtotop"><span class="glyphicon glyphicon-menu-up ico"></span></a>
+    <!-- 模态框 -->
+    <div class="modal fade" id="user_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">内部服务器登录帐号</h4>
+                </div>
+                <div class="modal-body" id="user_data"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 模态框end -->
+    <script type="text/javascript" src="/content/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/content/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/content/bootstrap-3.4.1-dist/plus/bootstrap-switch.js"></script>
+    <script type="text/javascript" src="/content/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/content/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="/content/js/page.js?v=@ViewBag.version"></script>
+</body>
+</html>

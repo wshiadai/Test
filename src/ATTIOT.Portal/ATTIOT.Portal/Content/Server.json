@@ -1,0 +1,32 @@
+[
+	{
+		"IP":"192.168.1.118",
+		"User":"administrator",
+		"Password":"Attiot1q2w3e"
+	},
+	{
+		"IP":"192.168.1.119",
+		"User":"administrator",
+		"Password":"3w.attiot.com"
+	},
+	{
+		"IP":"192.168.1.112",
+		"User":"administrator",
+		"Password":"attiot@1q2w3e"
+	},
+	{
+		"IP":"192.168.1.80",
+		"User":"administrator",
+		"Password":"Attiot!@#"
+	},
+	{
+		"IP":"192.168.1.222",
+		"User":"administrator",
+		"Password":"attiot@!q@w#e"
+	},
+       {
+		"IP":"192.168.1.162",
+		"User":"root",
+		"Password":"attiot@123"
+	}
+]
