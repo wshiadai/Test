@@ -5,7 +5,7 @@
     $("#java_total").html(java);
     banner_slide();
     $('#user_list').modal('hide');
-    var limit = $(".server").offset().top - 10;
+    var limit = $(".server").offset().top + 1;
     $(window).scroll(function () {
         var top = $(window).scrollTop();
         if (top >= limit) {
@@ -65,7 +65,7 @@ $(".nav li a").click(function () {
     var exp = ".data > ." + attr;
     var target = $(exp);
     $('html, body').animate({
-        scrollTop: target.offset().top - 10
+        scrollTop: target.offset().top + 1
     }, 500);
 });
 //下载项目清单
@@ -80,8 +80,9 @@ function banner_slide() {
     var len = $img.length;
     var out_speed = 1500;
     var in_speed = 900;
-    var interval = 8000;
-    $img.first().show();
+    var text_speed = 800;
+    var interval = 10000;
+    $img.first().show().find(".text").slideDown(text_speed);
     var i = 0;
     function turn() {
         if (i < len - 1) {
@@ -89,19 +90,22 @@ function banner_slide() {
             i++;
         }
         else {
-
             $img.eq(i).fadeOut(out_speed);
             $img.eq(0).fadeIn(in_speed);
             i = 0;
         }
+        $img.eq(i).find(".text").slideDown(text_speed);
+        $img.eq(i).siblings("li").find(".text").hide();
         $sign.eq(i).addClass("on").siblings("li").removeClass("on");
     }
+
     $("#img-fade .sign li").click(function () {
         clearInterval(set);
         var index = $(this).index();
         if (index != i) {
             $img.eq(i).fadeOut(out_speed);
-            $img.eq(index).fadeIn(in_speed);
+            $img.eq(index).fadeIn(in_speed).find(".text").slideDown(text_speed);
+            $img.eq(index).siblings("li").find(".text").hide();
             $sign.eq(index).addClass("on").siblings("li").removeClass("on");
             i = index;
             set = setInterval(turn, interval);

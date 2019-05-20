@@ -18,21 +18,21 @@ namespace ATTIOT.Portal.Controllers
         // GET: /Home/
 
         public ActionResult Index()
-        {
-            List<DotNet> netList = new List<DotNet>();
+        {    
             List<Java> javaList = new List<Java>();
-            var netTemp = GetDotNetList(0);
-            if (netTemp != null && netTemp.Count > 0)
-            {
-                netList = netTemp;
-            }
-            var javaTemp = GetJavaList(1);
+            List<DotNet> netList = new List<DotNet>();
+            var javaTemp = GetJavaList(0);
             if (javaTemp != null && javaTemp.Count > 0)
             {
                 javaList = javaTemp;
             }
-            ViewBag.netList = netList;
+            var netTemp = GetDotNetList(1);
+            if (netTemp != null && netTemp.Count > 0)
+            {
+                netList = netTemp;
+            }
             ViewBag.javaList = javaList;
+            ViewBag.netList = netList;
             string file = StringHelper.GetConfigValue("site_list");
             ServerInfo server = StringHelper.GetSystemInfo();
             ViewBag.server = server;
@@ -46,35 +46,6 @@ namespace ATTIOT.Portal.Controllers
             }
             ViewBag.user = user;
             return View();
-        }
-        private List<DotNet> GetDotNetList(int index)
-        {
-            try
-            {
-                string file = StringHelper.GetConfigValue("site_list");
-                DataTable dt = NpoiHelper.ExclImprotDataTable(file, index);  //将Excel文件转成DataTable
-                List<DotNet> dotNetList = new List<DotNet>();
-                if (dt != null && dt.Rows.Count > 0)
-                {
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        DotNet model = new DotNet();
-                        model.No = Convert.ToInt32(row["编号"].ToString());
-                        model.Name = row["项目名称"].ToString();
-                        model.URL = row["访问地址"].ToString();
-                        model.Port = row["端口"].ToString();
-                        model.Path = row["项目路径"].ToString();
-                        model.DB = row["对应数据库"].ToString();
-                        model.Remark = row["备注"] != null ? row["备注"].ToString() : string.Empty;
-                        dotNetList.Add(model);
-                    }
-                }
-                return dotNetList;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
         }
 
         private List<Java> GetJavaList(int index)
@@ -102,6 +73,36 @@ namespace ATTIOT.Portal.Controllers
                     }
                 }
                 return javaList;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        private List<DotNet> GetDotNetList(int index)
+        {
+            try
+            {
+                string file = StringHelper.GetConfigValue("site_list");
+                DataTable dt = NpoiHelper.ExclImprotDataTable(file, index);  //将Excel文件转成DataTable
+                List<DotNet> dotNetList = new List<DotNet>();
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        DotNet model = new DotNet();
+                        model.No = Convert.ToInt32(row["编号"].ToString());
+                        model.Name = row["项目名称"].ToString();
+                        model.URL = row["访问地址"].ToString();
+                        model.Port = row["端口"].ToString();
+                        model.Path = row["项目路径"].ToString();
+                        model.DB = row["对应数据库"].ToString();
+                        model.Remark = row["备注"] != null ? row["备注"].ToString() : string.Empty;
+                        dotNetList.Add(model);
+                    }
+                }
+                return dotNetList;
             }
             catch (Exception)
             {
@@ -156,18 +157,7 @@ namespace ATTIOT.Portal.Controllers
         public JsonResult GetProjectList()
         {
             List<Item> list = new List<Item>();
-            var netTemp = GetDotNetList(0);
-            if (netTemp != null && netTemp.Count > 0)
-            {
-                foreach (var item in netTemp)
-                {
-                    var itemModel = new Item();
-                    itemModel.label = item.Name;
-                    itemModel.id = string.Format("{0}_{1}", "dotnet", item.No);
-                    list.Add(itemModel);
-                }
-            }
-            var javaTemp = GetJavaList(1);
+            var javaTemp = GetJavaList(0);
             if (javaTemp != null && javaTemp.Count > 0)
             {
                 foreach (var item in javaTemp)
@@ -175,6 +165,17 @@ namespace ATTIOT.Portal.Controllers
                     var itemModel = new Item();
                     itemModel.label = item.Name;
                     itemModel.id = string.Format("{0}_{1}", "java", item.No);
+                    list.Add(itemModel);
+                }
+            }
+            var netTemp = GetDotNetList(1);
+            if (netTemp != null && netTemp.Count > 0)
+            {
+                foreach (var item in netTemp)
+                {
+                    var itemModel = new Item();
+                    itemModel.label = item.Name;
+                    itemModel.id = string.Format("{0}_{1}", "dotnet", item.No);
                     list.Add(itemModel);
                 }
             }

@@ -7,7 +7,7 @@ namespace ATTIOT.Model
 {
     public class Item
     {
-        public string label { get; set; }
         public string id { get; set; }
+        public string label { get; set; }
     }
 }

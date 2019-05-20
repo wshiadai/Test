@@ -13,8 +13,8 @@
         <ul class="container">
             <li class="logo"><img src="/content/images/logo.png" alt="物之联" /></li>
             <li><a href="javascript:void(0)" anchor="server">关于服务器</a></li>
-            <li><a href="javascript:void(0)" anchor="dot_net">.NET项目</a></li>
             <li><a href="javascript:void(0)" anchor="java">Java项目</a></li>
+            <li><a href="javascript:void(0)" anchor="dot_net">.NET项目</a></li>
             <li class="search">
                 <input type="text" class="s_box" name="s_box" placeholder="搜索项目" /><input type="button" class="s_btn" name="s_btn" />
                 <input type="hidden" id="pro_id" name="pro_id" />
@@ -25,9 +25,15 @@
     <div class="banner">
         <div id="img-fade">
             <ul class="image">
-                <li style="background-image: url(/content/images/banner.jpg);"></li>
-                <li style="background-image: url(/content/images/banner_2.jpg);"></li>
-                <li style="background-image: url(/content/images/banner_3.jpg);"></li>
+                <li style="background-image: url(/content/images/banner_3.jpg);">
+                    <div class="text">2019红色徒步挑战项目<span class="date">摄于&nbsp;2019年4月26日</span></div>
+                </li>
+                <li style="background-image: url(/content/images/banner.jpg);">
+                    <div class="text">厦门集美软件园俯瞰图<span class="date">摄于&nbsp;2018年1月11日</span></div>
+                </li>
+                <li style="background-image: url(/content/images/banner_2.jpg);">
+                    <div class="text">2018金门能创之旅<span class="date">摄于&nbsp;2018年4月8日</span></div>
+                </li>  
             </ul>
             <ul class="sign">
                 <li class="on"></li>
@@ -39,7 +45,7 @@
     <div class="clearfix"></div>
     <div class="container data">
         <div class="welcome">
-            <h2><span class="glyphicon glyphicon-home home_icon"></span>欢迎访问118服务器 :)</h2>
+            <h2><span class="glyphicon glyphicon-home home_icon"></span>欢迎访问118服务器</h2>
             <p>这里可以查看192.168.1.118服务器的基本信息，浏览服务器上运行的.NET项目和Java项目</p>         
         </div>
         <div class="server">
@@ -91,38 +97,7 @@
                 }
                 <div class="clearfix"></div>
             </div>
-        </div>
-        <div class="list dot_net">
-            <div class="title">
-                <span class="glyphicon glyphicon-list-alt ico"></span>.NET项目
-            </div>
-            <ul>
-                @if (ViewBag.netList != null && ViewBag.netList.Count > 0)
-                {
-                foreach (var item in (List<DotNet>)ViewBag.netList)
-                {
-                    <li no="dotnet_@item.No">
-                        <h3 class="pro_name"><a href="@item.URL" target="_blank">@item.Name</a></h3>
-                        <div class="p_row">
-                            <span class="key"><span class="glyphicon glyphicon-link ico"></span>访问地址：</span><span class="value"><a href="@item.URL" target="_blank">@item.URL</a></span>
-                            <span class="key"><span class="glyphicon glyphicon-record ico"></span>端口：</span><span class="value">@item.Port</span>
-                        </div>
-                        <div class="p_row">
-                            <span class="key"><span class="glyphicon glyphicon-file ico"></span>项目路径：</span><span class="value">@item.Path</span>
-                            <span class="key"><span class="glyphicon glyphicon-hdd ico"></span>对应数据库：</span><span class="value">@item.DB</span>
-                        </div>
-                        <div class="p_row">
-                            <span class="key"><span class="glyphicon glyphicon-th-large ico"></span>备注：</span><span class="value">@item.Remark</span>
-                        </div>
-                    </li>
-                }
-                }
-            else
-                {
-                    <li class="empty">暂无数据……</li>
-                }
-            </ul>
-        </div>
+        </div>  
         <div class="list java">
             <div class="title"><span class="glyphicon glyphicon-list-alt ico"></span>Java项目</div>
             <ul>
@@ -150,8 +125,39 @@
                 </li>
             }
             }
-        else
+           else
             {
+                    <li class="empty">暂无数据……</li>
+             }
+            </ul>
+        </div>
+        <div class="list dot_net">
+            <div class="title">
+                <span class="glyphicon glyphicon-list-alt ico"></span>.NET项目
+            </div>
+            <ul>
+                @if (ViewBag.netList != null && ViewBag.netList.Count > 0)
+                {
+                    foreach (var item in (List<DotNet>)ViewBag.netList)
+                    {
+                        <li no="dotnet_@item.No">
+                            <h3 class="pro_name"><a href="@item.URL" target="_blank">@item.Name</a></h3>
+                            <div class="p_row">
+                                <span class="key"><span class="glyphicon glyphicon-link ico"></span>访问地址：</span><span class="value"><a href="@item.URL" target="_blank">@item.URL</a></span>
+                                <span class="key"><span class="glyphicon glyphicon-record ico"></span>端口：</span><span class="value">@item.Port</span>
+                            </div>
+                            <div class="p_row">
+                                <span class="key"><span class="glyphicon glyphicon-file ico"></span>项目路径：</span><span class="value">@item.Path</span>
+                                <span class="key"><span class="glyphicon glyphicon-hdd ico"></span>对应数据库：</span><span class="value">@item.DB</span>
+                            </div>
+                            <div class="p_row">
+                                <span class="key"><span class="glyphicon glyphicon-th-large ico"></span>备注：</span><span class="value">@item.Remark</span>
+                            </div>
+                        </li>
+                    }
+                }
+                else
+                {
                     <li class="empty">暂无数据……</li>
                 }
             </ul>
@@ -183,7 +189,7 @@
     </div>  
     <div class="footer">
         <div class="copyright">
-            &copy; 2013 - @DateTime.Now.ToString("yyyy")&nbsp;&nbsp;厦门物之联智能科技有限公司&nbsp;&nbsp;All Rights Reserved
+            &copy; 2013 - @DateTime.Now.ToString("yyyy")&nbsp;&nbsp;<a href="http://www.attiot.com/" target="_blank">厦门物之联智能科技有限公司</a>&nbsp;&nbsp;All Rights Reserved
         </div>
     </div>
     <a href="javascript:void(0)" id="backtotop"><span class="glyphicon glyphicon-menu-up ico"></span></a>
