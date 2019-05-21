@@ -12,7 +12,7 @@ using ATTIOT.Model;
 
 namespace ATTIOT.Portal.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         //
         // GET: /Home/
