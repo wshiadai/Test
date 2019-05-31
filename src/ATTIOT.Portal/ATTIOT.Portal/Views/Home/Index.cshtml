@@ -121,7 +121,7 @@
                         <span class="key"><span class="glyphicon glyphicon-hdd ico"></span>对应数据库：</span><span class="value">@item.DB</span>
                     </div>
                     <div class="p_row">
-                        <span class="key"><span class="glyphicon glyphicon-th-large ico"></span>备注：</span><span class="value">@item.Remark</span>
+                        <span class="key"><span class="glyphicon glyphicon-th-large ico"></span>备注：</span><span class="value">@Html.Raw(item.Remark)</span>
                     </div>
                 </li>
             }
@@ -152,7 +152,7 @@
                                 <span class="key"><span class="glyphicon glyphicon-hdd ico"></span>对应数据库：</span><span class="value">@item.DB</span>
                             </div>
                             <div class="p_row">
-                                <span class="key"><span class="glyphicon glyphicon-th-large ico"></span>备注：</span><span class="value">@item.Remark</span>
+                                <span class="key"><span class="glyphicon glyphicon-th-large ico"></span>备注：</span><span class="value">@Html.Raw(item.Remark)</span>
                             </div>
                         </li>
                     }

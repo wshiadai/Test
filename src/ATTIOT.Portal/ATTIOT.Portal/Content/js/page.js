@@ -1,6 +1,6 @@
 ﻿$(function () {
-    var dotnet = $(".dot_net ul li").length;
-    var java = $(".java ul li").length;
+    var dotnet = $(".dot_net ul .pro_name").length;
+    var java = $(".java ul .pro_name").length;
     $("#dotnet_total").html(dotnet);
     $("#java_total").html(java);
     banner_slide();

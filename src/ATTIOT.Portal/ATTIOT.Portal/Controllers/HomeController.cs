@@ -68,7 +68,7 @@ namespace ATTIOT.Portal.Controllers
                         model.AJPPort = row["AJP协议访问端口"].ToString();
                         model.Path = row["项目路径"].ToString();
                         model.DB = row["对应数据库"].ToString();
-                        model.Remark = row["备注"] != null ? row["备注"].ToString() : string.Empty;
+                        model.Remark = row["备注"] != null ? row["备注"].ToString().Trim() : string.Empty;
                         javaList.Add(model);
                     }
                 }
@@ -98,7 +98,7 @@ namespace ATTIOT.Portal.Controllers
                         model.Port = row["端口"].ToString();
                         model.Path = row["项目路径"].ToString();
                         model.DB = row["对应数据库"].ToString();
-                        model.Remark = row["备注"] != null ? row["备注"].ToString() : string.Empty;
+                        model.Remark = row["备注"] != null ? row["备注"].ToString().Trim() : string.Empty;
                         dotNetList.Add(model);
                     }
                 }
