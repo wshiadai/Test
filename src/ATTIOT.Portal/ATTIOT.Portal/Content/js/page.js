@@ -1,10 +1,10 @@
 ﻿$(function () {
-    var dotnet = $(".dot_net ul li").length;
-    var java = $(".java ul li").length;
+    var dotnet = $(".dot_net ul .pro_name").length;
+    var java = $(".java ul .pro_name").length;
     $("#dotnet_total").html(dotnet);
     $("#java_total").html(java);
     banner_slide();
-    $('#user_list').modal('hide');
+    //$('#user_list').modal('hide');
     var limit = $(".server").offset().top + 1;
     $(window).scroll(function () {
         var top = $(window).scrollTop();
@@ -28,16 +28,25 @@
                         $("#pro_id").val(ui.item.id);
                     },
                     select: function (event, ui) {
+                        $(".search_info").hide();
                         go_position(ui.item.id);
                     }
                 });
             }
         }
     });
+
+    $(".s_box").keypress(function () {
+        $(".search_info").hide();
+        var value = $("#pro_id").val();
+        if (value != "") {
+            $("#pro_id").val("");
+        }
+    });
 });
 
 function go_position(id) {
-    if (id == undefined || id == "") {
+    if (id == "") {
         return;
     }
     var exp = ".list ul > li[no='" + id + "']";
@@ -51,11 +60,16 @@ function go_position(id) {
 
 $(".s_btn").click(function () {
     var name = $(".s_box").val();
-    if (name == undefined || name == "") {
-        $("#pro_id").val("");
+    var id = $("#pro_id").val();
+    if (name == "") {
+        $(".search_info").html("请输入项目名称").show();
         return;
     }
-    var id = $("#pro_id").val();
+    if (id == "") {
+        $(".search_info").html("无此项目").show();
+        return;
+    }
+    $(".search_info").hide();
     go_position(id);
 });
 
@@ -98,7 +112,6 @@ function banner_slide() {
         $img.eq(i).siblings("li").find(".text").hide();
         $sign.eq(i).addClass("on").siblings("li").removeClass("on");
     }
-
     $("#img-fade .sign li").click(function () {
         clearInterval(set);
         var index = $(this).index();

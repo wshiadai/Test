@@ -18,6 +18,7 @@
             <li class="search">
                 <input type="text" class="s_box" name="s_box" placeholder="搜索项目" /><input type="button" class="s_btn" name="s_btn" />
                 <input type="hidden" id="pro_id" name="pro_id" />
+                <div class="search_info"></div>
             </li>
         </ul>
         <div class="clearfix"></div>
@@ -46,7 +47,7 @@
     <div class="container data">
         <div class="welcome">
             <h2><span class="glyphicon glyphicon-home home_icon"></span>欢迎访问118服务器</h2>
-            <p>这里可以查看192.168.1.118服务器的基本信息，浏览服务器上运行的.NET项目和Java项目</p>         
+            <p>这里可以查看192.168.1.118服务器的基本信息，浏览服务器上运行的Java项目和.NET项目</p>         
         </div>
         <div class="server">
             <div class="title">
@@ -79,15 +80,16 @@
                     <span class="name">硬盘总容量：</span><span class="value">@ViewBag.server.TotalDisk.ToString("0.0") G</span>
                     <span class="name">可用容量：</span><span class="vr">@ViewBag.server.FreeDisk.ToString("0.0") G</span>
                 </div>
-                if (ViewBag.user != null) { 
+                <!-- 暂不开放 -->
+                @*if (ViewBag.user != null) { 
                 <div>
                     <span class="name">登录帐号：</span><span class="value">@ViewBag.user.User</span>
                     <span class="name">密码：</span><span class="vr" >@ViewBag.user.Password &nbsp;&nbsp;<a href="javascript:void(0)" id="more_account">更多</a></span>
                 </div>
-                }
+                }*@
                 <div>
-                    <span class="name">.NET项目数量：</span><span class="value" id="dotnet_total"></span>
-                    <span class="name">Java项目数量：</span><span class="vr" id="java_total"></span>
+                    <span class="name">Java项目数量：</span><span class="value" id="java_total"></span>
+                    <span class="name">.NET项目数量：</span><span class="vr" id="dotnet_total"></span>
                 </div>
                 <div class="pull-right update">数据更新时间：@DateTime.Now.ToString("yyyy-MM-dd HH:mm")</div>
                 }
@@ -120,7 +122,7 @@
                         <span class="key"><span class="glyphicon glyphicon-hdd ico"></span>对应数据库：</span><span class="value">@item.DB</span>
                     </div>
                     <div class="p_row">
-                        <span class="key"><span class="glyphicon glyphicon-th-large ico"></span>备注：</span><span class="value">@item.Remark</span>
+                        <span class="key"><span class="glyphicon glyphicon-th-large ico"></span>备注：</span><span class="value">@Html.Raw(item.Remark)</span>
                     </div>
                 </li>
             }
@@ -151,7 +153,7 @@
                                 <span class="key"><span class="glyphicon glyphicon-hdd ico"></span>对应数据库：</span><span class="value">@item.DB</span>
                             </div>
                             <div class="p_row">
-                                <span class="key"><span class="glyphicon glyphicon-th-large ico"></span>备注：</span><span class="value">@item.Remark</span>
+                                <span class="key"><span class="glyphicon glyphicon-th-large ico"></span>备注：</span><span class="value">@Html.Raw(item.Remark)</span>
                             </div>
                         </li>
                     }
@@ -194,7 +196,7 @@
     </div>
     <a href="javascript:void(0)" id="backtotop"><span class="glyphicon glyphicon-menu-up ico"></span></a>
     <!-- 模态框 -->
-    <div class="modal fade" id="user_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    @*<div class="modal fade" id="user_list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -207,7 +209,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
     <!-- 模态框end -->
     <script type="text/javascript" src="/content/js/jquery.min.js"></script>
     <script type="text/javascript" src="/content/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>

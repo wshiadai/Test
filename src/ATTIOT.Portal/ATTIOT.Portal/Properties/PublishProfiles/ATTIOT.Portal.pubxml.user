@@ -10,13 +10,13 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/ATTIOT.Common.dll">
-      <publishTime>05/20/2019 18:06:06</publishTime>
+      <publishTime>06/03/2019 09:39:42</publishTime>
     </File>
     <File Include="bin/ATTIOT.Model.dll">
       <publishTime>05/20/2019 18:06:06</publishTime>
     </File>
     <File Include="bin/ATTIOT.Portal.dll">
-      <publishTime>05/20/2019 18:06:07</publishTime>
+      <publishTime>06/03/2019 09:39:42</publishTime>
     </File>
     <File Include="bin/ICSharpCode.SharpZipLib.dll">
       <publishTime>06/21/2017 10:55:26</publishTime>
@@ -166,7 +166,7 @@
       <publishTime>03/27/2019 16:28:45</publishTime>
     </File>
     <File Include="Content/css/site.css">
-      <publishTime>05/20/2019 17:53:38</publishTime>
+      <publishTime>05/21/2019 10:27:33</publishTime>
     </File>
     <File Include="Content/images/banner.jpg">
       <publishTime>02/23/2019 14:57:22</publishTime>
@@ -193,7 +193,7 @@
       <publishTime>02/23/2019 14:57:15</publishTime>
     </File>
     <File Include="Content/js/page.js">
-      <publishTime>05/20/2019 17:41:14</publishTime>
+      <publishTime>06/03/2019 09:39:12</publishTime>
     </File>
     <File Include="Content/Server.json">
       <publishTime>03/01/2019 17:45:07</publishTime>
@@ -267,8 +267,11 @@
     <File Include="packages.config">
       <publishTime>02/23/2019 14:51:16</publishTime>
     </File>
+    <File Include="static/物之联追溯码验证统一接口文档.pdf">
+      <publishTime>05/31/2019 15:35:51</publishTime>
+    </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>05/20/2019 17:42:16</publishTime>
+      <publishTime>06/03/2019 09:37:23</publishTime>
     </File>
     <File Include="Views/Home/Test.cshtml">
       <publishTime>03/26/2019 15:12:08</publishTime>
@@ -277,7 +280,7 @@
       <publishTime>02/23/2019 14:51:15</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/20/2019 18:06:08</publishTime>
+      <publishTime>06/03/2019 09:39:43</publishTime>
     </File>
   </ItemGroup>
 </Project>

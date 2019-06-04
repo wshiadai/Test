@@ -12,7 +12,7 @@ using ATTIOT.Model;
 
 namespace ATTIOT.Portal.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         //
         // GET: /Home/
@@ -68,7 +68,7 @@ namespace ATTIOT.Portal.Controllers
                         model.AJPPort = row["AJP协议访问端口"].ToString();
                         model.Path = row["项目路径"].ToString();
                         model.DB = row["对应数据库"].ToString();
-                        model.Remark = row["备注"] != null ? row["备注"].ToString() : string.Empty;
+                        model.Remark = row["备注"] != null ? row["备注"].ToString().Trim() : string.Empty;
                         javaList.Add(model);
                     }
                 }
@@ -98,7 +98,7 @@ namespace ATTIOT.Portal.Controllers
                         model.Port = row["端口"].ToString();
                         model.Path = row["项目路径"].ToString();
                         model.DB = row["对应数据库"].ToString();
-                        model.Remark = row["备注"] != null ? row["备注"].ToString() : string.Empty;
+                        model.Remark = row["备注"] != null ? row["备注"].ToString().Trim() : string.Empty;
                         dotNetList.Add(model);
                     }
                 }
@@ -190,29 +190,29 @@ namespace ATTIOT.Portal.Controllers
         private List<UserInfo> GetAccountList()
         {
             List<UserInfo> list = new List<UserInfo>();
-            try
-            {
-                string path = AppDomain.CurrentDomain.BaseDirectory + "\\Content\\Server.json";
-                FileInfo file = new FileInfo(path);
-                if (file.Exists)
-                {
-                    using (FileStream fs = file.OpenRead())
-                    {
-                        byte[] bytes = new byte[file.Length];
-                        int r = fs.Read(bytes, 0, bytes.Length);
-                        string json = Encoding.ASCII.GetString(bytes);
-                        json = json.Trim().Replace("\r", "").Replace("\n", "").Replace("\t", "");
-                        if (!string.IsNullOrEmpty(json))
-                        {
-                            list = JsonConvert.DeserializeObject<List<UserInfo>>(json);
-                        }
-                    }
-                }
-            }
-            catch (Exception)
-            {
+            //try
+            //{
+            //    string path = AppDomain.CurrentDomain.BaseDirectory + "\\Content\\Server.json";
+            //    FileInfo file = new FileInfo(path);
+            //    if (file.Exists)
+            //    {
+            //        using (FileStream fs = file.OpenRead())
+            //        {
+            //            byte[] bytes = new byte[file.Length];
+            //            int r = fs.Read(bytes, 0, bytes.Length);
+            //            string json = Encoding.ASCII.GetString(bytes);
+            //            json = json.Trim().Replace("\r", "").Replace("\n", "").Replace("\t", "");
+            //            if (!string.IsNullOrEmpty(json))
+            //            {
+            //                list = JsonConvert.DeserializeObject<List<UserInfo>>(json);
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception)
+            //{
 
-            }
+            //}
             return list;
         }
     }
