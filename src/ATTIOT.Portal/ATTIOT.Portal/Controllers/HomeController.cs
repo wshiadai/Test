@@ -190,29 +190,29 @@ namespace ATTIOT.Portal.Controllers
         private List<UserInfo> GetAccountList()
         {
             List<UserInfo> list = new List<UserInfo>();
-            try
-            {
-                string path = AppDomain.CurrentDomain.BaseDirectory + "\\Content\\Server.json";
-                FileInfo file = new FileInfo(path);
-                if (file.Exists)
-                {
-                    using (FileStream fs = file.OpenRead())
-                    {
-                        byte[] bytes = new byte[file.Length];
-                        int r = fs.Read(bytes, 0, bytes.Length);
-                        string json = Encoding.ASCII.GetString(bytes);
-                        json = json.Trim().Replace("\r", "").Replace("\n", "").Replace("\t", "");
-                        if (!string.IsNullOrEmpty(json))
-                        {
-                            list = JsonConvert.DeserializeObject<List<UserInfo>>(json);
-                        }
-                    }
-                }
-            }
-            catch (Exception)
-            {
+            //try
+            //{
+            //    string path = AppDomain.CurrentDomain.BaseDirectory + "\\Content\\Server.json";
+            //    FileInfo file = new FileInfo(path);
+            //    if (file.Exists)
+            //    {
+            //        using (FileStream fs = file.OpenRead())
+            //        {
+            //            byte[] bytes = new byte[file.Length];
+            //            int r = fs.Read(bytes, 0, bytes.Length);
+            //            string json = Encoding.ASCII.GetString(bytes);
+            //            json = json.Trim().Replace("\r", "").Replace("\n", "").Replace("\t", "");
+            //            if (!string.IsNullOrEmpty(json))
+            //            {
+            //                list = JsonConvert.DeserializeObject<List<UserInfo>>(json);
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception)
+            //{
 
-            }
+            //}
             return list;
         }
     }

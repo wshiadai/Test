@@ -4,7 +4,7 @@
     $("#dotnet_total").html(dotnet);
     $("#java_total").html(java);
     banner_slide();
-    $('#user_list').modal('hide');
+    //$('#user_list').modal('hide');
     var limit = $(".server").offset().top + 1;
     $(window).scroll(function () {
         var top = $(window).scrollTop();
