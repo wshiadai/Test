@@ -284,7 +284,7 @@ namespace ATTIOT.Common
 
             byte[] bytes = DataTableToExcel(dtSource, strHeaderText, isHeader).GetBuffer();
             // 设置编码和附件格式
-            curContext.Response.ClearHeaders(); //清楚头信息
+            curContext.Response.ClearHeaders(); //清除头信息
             curContext.Response.ContentType = "application/octet-stream";
             curContext.Response.ContentEncoding = Encoding.UTF8;
             curContext.Response.Charset = "";
